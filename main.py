@@ -123,6 +123,7 @@ labels={ "accident_severity_inv": "Accident severity",
 "local_authority_district": "District"})
 st.plotly_chart(fig, use_container_width=True)
 
+
 st.header('Number of casualties by district')
 df_bars = df_selection.groupby(['local_authority_district','year'])['number_of_casualties'].sum().reset_index()
 fig = px.histogram(df_bars, x='local_authority_district', y='number_of_casualties', color='year', barmode='group',
@@ -154,7 +155,7 @@ fig = px.pie(df_selection_all, values='number_of_vehicles', names='age_band_of_d
 st.plotly_chart(fig, use_container_width=True)
 
 100*df_selection_all.pivot_table('severity', index='day_of_week', 
-columns='year', aggfunc='sum')/df_selecdf_selection_alltion.pivot_table('severity', index='day_of_week', columns='year', aggfunc='sum').sum()
+columns='year', aggfunc='sum')/df_selection_all.pivot_table('severity', index='day_of_week', columns='year', aggfunc='sum').sum()
 
 100*df_selection_all.pivot_table('severity', index='month', columns='year',
  aggfunc='sum')/df_selection_all.pivot_table('severity', index='month', columns='year', aggfunc='sum').sum()
